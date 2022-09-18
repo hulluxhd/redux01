@@ -43,9 +43,10 @@ export function todoReducer(state = INITIAL_STATE, action) {
 
     if (action.type === todoTypes.MARK_AS_COMPLETED) {
         const { todo } = action.payload
-        const filteredTodo = state.todoList.find(todoo => todoo.id === todo.id)
+        const todoListCopy = { ...state }
+        const filteredTodo = todoListCopy.todoList.find(todoo => todoo.id === todo.id)
         filteredTodo.completed = !filteredTodo.completed
-        return {...state}
+        return { ...todoListCopy }
 
     }
 

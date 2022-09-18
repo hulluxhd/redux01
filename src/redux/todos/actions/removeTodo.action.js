@@ -1,13 +1,10 @@
 import { todoTypes } from "../todo.types";
 
-export function addTodo(title) {
+export function removeTodo(id) {
     return {
-        type: todoTypes.ADD_TODO,
+        type: todoTypes.REMOVE_TODO,
         payload: {
-            title
+            id
         }
     }
 }
-
-
-

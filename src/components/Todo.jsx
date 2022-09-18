@@ -1,5 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
-import { markTodoAsCompleted, removeTodo } from "../redux/todos/actions/addTodo.action"
+import { removeTodo } from "../redux/todos/actions/removeTodo.action"
+import { markTodoAsCompleted } from "../redux/todos/actions/markTodoAsCompleted.action.js"
+import { todoList } from "../redux/todos/selectors/todoList.selector"
 
 const style = {
     display: "flex",
@@ -22,12 +24,11 @@ const liStyleCompleted = {
 
 export function Todo() {
     const dispatch = useDispatch()
-    const todoInfo = useSelector((state) => state)
+    const todoInfo = useSelector(todoList)
     console.log(todoInfo)
-
     return (
         <ul style={style}>
-            {todoInfo.todos.todoList?.map(todo => (
+            {todoInfo?.map(todo => (
                 <li key={todo.id} style={todo.completed ? liStyleCompleted : liStyle}>
                     <p>{todo.id}</p>
                     <p>{todo.title}</p>
